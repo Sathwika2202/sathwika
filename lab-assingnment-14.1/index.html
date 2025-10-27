@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <!-- AI Suggested Google Fonts: Montserrat & Lora for modern, readable typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* AI Suggested Color Palette: Deep blue, accent teal, soft gray, white */
+            --color-bg: #f5f7fa;
+            --color-primary: #163D57;
+            --color-accent: #35B8B9;
+            --color-text: #131313;
+            --color-card: #ffffff;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            margin: 0;
+            background: var(--color-bg);
+            color: var(--color-text);
+        }
+        header {
+            background: var(--color-primary);
+            color: #fff;
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        nav {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-title {
+            font-family: 'Lora', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+        ul.nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+        ul.nav-links li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.05rem;
+            transition: color 0.2s;
+        }
+        ul.nav-links li a:hover, ul.nav-links li a:focus {
+            color: var(--color-accent);
+        }
+        main {
+            max-width: 1100px;
+            margin: 3rem auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+        }
+        section {
+            background: var(--color-card);
+            padding: 2rem 1.5rem;
+            border-radius: 14px;
+            box-shadow: 0 4px 16px rgba(22, 61, 87, 0.04);
+        }
+        h2 {
+            color: var(--color-primary);
+            font-family: 'Lora', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        /* About Me Styling */
+        #about p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin: 0;
+        }
+        /* Projects Styling */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 1.5rem;
+        }
+        .project-card {
+            background: var(--color-bg);
+            border-radius: 10px;
+            padding: 1.2rem;
+            box-shadow: 0 2px 8px rgba(53, 184, 185, 0.10);
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+        .project-card:hover, .project-card:focus-within {
+            transform: translateY(-4px) scale(1.018);
+            box-shadow: 0 6px 24px rgba(22, 61, 87, 0.12);
+        }
+        .project-card h3 {
+            margin-top: 0;
+            color: var(--color-accent);
+            font-size: 1.22rem;
+        }
+        /* Contact Styling */
+        #contact form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            max-width: 450px;
+            margin: 0 auto;
+        }
+        #contact input, #contact textarea {
+            font-size: 1rem;
+            padding: 0.8rem 1rem;
+            border-radius: 5px;
+            border: 1px solid #c3dde3;
+            background: #f6fbfe;
+            font-family: 'Montserrat', Arial, sans-serif;
+            resize: vertical;
+        }
+        #contact button {
+            font-size: 1.1rem;
+            font-family: 'Montserrat', Arial, sans-serif;
+            padding: 0.8rem;
+            background: var(--color-accent);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.22s;
+        }
+        #contact button:hover, #contact button:focus {
+            background: #14868a;
+        }
+        /* Responsiveness */
+        @media (max-width: 800px) {
+            main {
+                margin: 1.5rem auto;
+                gap: 1.2rem;
+            }
+            nav, main {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+        @media (max-width: 500px) {
+            header {
+                padding: 1rem 0;
+            }
+            section {
+                padding: 1rem 0.5rem;
+            }
+            .nav-title {
+                font-size: 1.3rem;
+            }
+            ul.nav-links {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav aria-label="Primary">
+            <span class="nav-title">My Portfolio</span>
+            <ul class="nav-links">
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="about" tabindex="-1">
+            <h2>About Me</h2>
+            <p>
+                Hi! I'm [Your Name], a passionate web developer focused on building engaging, accessible digital experiences. 
+                I bring modern front-end skills and a creative mindset, leveraging AI to streamline design and enhance user interfaces.
+            </p>
+        </section>
+        <section id="projects" tabindex="-1">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card" tabindex="0">
+                    <h3>Responsive Blog Platform</h3>
+                    <p>Designed a blog platform using React and AI-generated layouts. Implements dark mode and accessibility features.</p>
+                </div>
+                <div class="project-card" tabindex="0">
+                    <h3>Smart Portfolio Generator</h3>
+                    <p>Created a tool using JavaScript and OpenAI to automate personal portfolio creation, including color/typography recommendations.</p>
+                </div>
+                <div class="project-card" tabindex="0">
+                    <h3>Interactive UX Demos</h3>
+                    <p>Built multimedia demos showcasing interactive UI components optimized by AI for performance and usability.</p>
+                </div>
+            </div>
+        </section>
+        <section id="contact" tabindex="-1">
+            <h2>Contact</h2>
+            <form autocomplete="off" aria-label="Contact Form">
+                <label>
+                    Name
+                    <input type="text" name="name" required aria-required="true" />
+                </label>
+                <label>
+                    Email
+                    <input type="email" name="email" required aria-required="true" />
+                </label>
+                <label>
+                    Message
+                    <textarea name="message" rows="5" required aria-required="true"></textarea>
+                </label>
+                <button type="submit">Send</button>
+            </form>
+        </section>
+    </main>
+    <script>
+        // Smooth scroll for older browsers
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href').slice(1);
+                const target = document.getElementById(targetId);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    target.focus({ preventScroll: true });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

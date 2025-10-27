@@ -1,0 +1,150 @@
+from flask import Flask, render_template_string, request, jsonify
+
+app = Flask(__name__)
+
+PRODUCT = {
+    "image": "https://images.unsplash.com/photo-1513708925885-7d0f2e917f6e?auto=format&fit=crop&w=400&q=80",
+    "title": "Wireless Noise-Cancelling Headphones",
+    "price": "$129.99"
+}
+
+HTML = """
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ product.title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        /* BEM styles */
+        .product {
+            max-width: 340px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 1rem;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.09);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: box-shadow 0.3s cubic-bezier(0.4,0,0.2,1);
+        }
+        .product:hover {
+            box-shadow: 0 6px 25px rgba(0,0,0,0.18);
+        }
+
+        .product__image {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+            height: 220px;
+            transition: transform 0.3s;
+        }
+        .product:hover .product__image {
+            transform: scale(1.04);
+            filter: brightness(0.95);
+        }
+        .product__body {
+            padding: 1.3rem 1.5rem 1.7rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .product__title {
+            margin: 0;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #21243d;
+        }
+        .product__price {
+            font-size: 1.15rem;
+            color: #1e885b;
+            font-weight: bold;
+        }
+        .product__add-to-cart {
+            margin-top: 13px;
+            padding: 0.75em 1.8em;
+            background: linear-gradient(90deg, #32c776 40%, #44b3ea 100%);
+            color: #fff;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 2.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.23s, box-shadow 0.23s, transform 0.13s;
+            outline: none;
+            box-shadow: 0 2px 10px rgba(68,179,234,0.09);
+        }
+        .product__add-to-cart:hover, .product__add-to-cart:focus {
+            background: linear-gradient(90deg, #44b3ea, #32c776 100%);
+            box-shadow: 0 4px 22px rgba(50,199,118,0.17);
+            transform: translateY(-2px) scale(1.04);
+        }
+
+        @media (max-width: 550px) {
+            .product {
+                margin: 14px;
+                max-width: 98vw;
+            }
+            .product__image {
+                height: 180px;
+            }
+            .product__body {
+                padding: 1rem 1rem 1.2rem 1rem;
+            }
+        }
+
+        /* Extra: alert styles for add to cart */
+        .add-alert {
+            display: none;
+            position: fixed;
+            top: 2.5%;
+            right: 2%;
+            background: #32c776;
+            color: #fff;
+            padding: 0.8em 1.4em;
+            font-size: 1.05rem;
+            border-radius: 2em;
+            box-shadow: 0 2px 22px rgba(50,199,118,0.18);
+            z-index: 9999;
+            animation: fadeIn 0.4s cubic-bezier(0.6,0,0.1,1);
+        }
+        .add-alert.show {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px);}
+            to   { opacity: 1; transform: translateY(0);}
+        }
+    </style>
+</head>
+<body style="background: #f5f6fa;">
+    <div class="product">
+        <img class="product__image" src="{{ product.image }}" alt="{{ product.title }}">
+        <div class="product__body">
+            <h2 class="product__title">{{ product.title }}</h2>
+            <span class="product__price">{{ product.price }}</span>
+            <button class="product__add-to-cart" id="addToCartBtn">Add to Cart</button>
+        </div>
+    </div>
+    <div class="add-alert" id="addAlert" role="alert">
+        Added to cart!
+    </div>
+    <script>
+        // Add to Cart logic with alert
+        document.getElementById('addToCartBtn').onclick = function() {
+            document.getElementById('addAlert').classList.add('show');
+            setTimeout(function(){
+                document.getElementById('addAlert').classList.remove('show');
+            }, 1300);
+        }
+    </script>
+</body>
+</html>
+"""
+
+@app.route("/")
+def product_page():
+    return render_template_string(HTML, product=PRODUCT)
+
+if __name__ == "__main__":
+    app.run(debug=True)
