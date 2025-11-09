@@ -1,0 +1,5 @@
+transaction_id,customer_name,transaction_date,transaction_amount,Month_Year,normalized_amount
+201,John,2023-01-15,1500,2023-01,0.0
+204,Maria,,3200,NaT,0.68
+205,Tom,2023-05-30,2800,2023-05,0.5200000000000001
+206,Lisa,,4000,NaT,1.0

@@ -1,0 +1,7 @@
+name,gender,age,weight_kg,blood_pressure,heart_rate,height_m
+Alice,Male,25,60.0,120.0,80.0,1.65
+Bob,Female,40,75.0,123.25,76.0,1.7
+Charlie,Male,35,70.0,130.0,83.5,1.7
+David,Female,60,68.0,125.0,90.0,1.8
+Eva,Male,55,55.0,123.25,88.0,1.6
+Frank,Male,50,80.0,118.0,83.5,1.75
