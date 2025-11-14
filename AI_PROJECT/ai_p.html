@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart Library Pro</title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+  <div class="theme-toggle" onclick="toggleTheme()">
+    <i class="fas fa-moon"></i>
+  </div>
+
+  <div class="container">
+    <header>
+      <h1>Smart Library Pro</h1>
+      <p>Issue & Return Books Instantly!</p>
+    </header>
+
+    <!-- DASHBOARD -->
+    <div class="dashboard">
+      <div class="card">
+        <h3>Books Issued</h3>
+        <p id="issuedCount">0</p>
+      </div>
+      <div class="card">
+        <h3>Overdue</h3>
+        <p id="overdueCount">0</p>
+      </div>
+      <div class="card">
+        <h3>Total Books</h3>
+        <p id="totalBooks">0</p>
+      </div>
+    </div>
+
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search books, authors, or students..." />
+      <i class="fas fa-search"></i>
+    </div>
+
+    <div class="controls">
+      <button onclick="openAddModal()" class="btn success"><i class="fas fa-plus"></i> Add Book</button>
+      <button onclick="issueBook()" class="btn primary"><i class="fas fa-book-reader"></i> Issue</button>
+      <button onclick="returnBook()" class="btn warning"><i class="fas fa-undo"></i> Return</button>
+      <button onclick="refreshTable()" class="btn secondary"><i class="fas fa-sync-alt"></i> Refresh</button>
+    </div>
+
+    <div class="table-wrapper">
+      <table id="bookTable">
+        <thead>
+          <tr>
+            <th>Title</th><th>Author</th><th>Total</th><th>Issued</th><th>Available</th>
+            <th>Students</th><th>Issue Date</th><th>Due</th><th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="bookBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ==================== MODALS ==================== -->
+  <!-- Add Book Modal -->
+  <div id="addModal" class="modal"><div class="modal-content">
+    <span class="close" onclick="closeAddModal()">×</span>
+    <h2>Add Book</h2>
+    <form id="addBookForm">
+      <input type="text" id="bookTitle" placeholder="Title" required />
+      <input type="text" id="bookAuthor" placeholder="Author" required />
+      <input type="number" id="bookCopies" placeholder="Copies" min="1" required />
+      <button type="submit" class="btn success">Save Book</button>
+    </form>
+  </div></div>
+
+  <!-- Issue Modal -->
+  <div id="issueModal" class="modal"><div class="modal-content">
+    <span class="close" onclick="closeIssueModal()">×</span>
+    <h2>Issue Book</h2>
+    <div id="issueInfo"></div>
+    <form id="issueForm">
+      <input type="text" id="issueName" placeholder="Student Name" required />
+      <input type="text" id="issueId" placeholder="Student ID" required />
+      <button type="submit" class="btn primary">
+        <span id="issueBtnText">Issue Now</span>
+        <i id="issueSpinner" class="fas fa-spinner fa-spin" style="display:none; margin-left:10px;"></i>
+      </button>
+    </form>
+  </div></div>
+
+  <!-- Return Modal -->
+  <div id="returnModal" class="modal"><div class="modal-content">
+    <span class="close" onclick="closeReturnModal()">×</span>
+    <h2>Return Book</h2>
+    <div id="returnList"></div>
+  </div></div>
+
+  <!-- Receipt Modal -->
+  <div id="receiptModal" class="modal"><div class="modal-content" id="receiptContent">
+    <span class="close" onclick="closeReceipt()">×</span>
+    <h2>Return Receipt</h2>
+    <div id="receiptBody"></div>
+    <button onclick="printReceipt()" class="btn primary">Print</button>
+    <button onclick="downloadReceipt()" class="btn success">Download</button>
+  </div></div>
+
+  <canvas id="confetti"></canvas>
+  <div id="toast" class="toast"></div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,443 @@
+/* =====================================================
+   SMART LIBRARY PRO – DESIGN SYSTEM
+   Clean, modern, and accessible styles
+   Built for librarians, students, and smooth UX
+   ===================================================== */
+
+/* ————————————————————
+   1. DESIGN TOKENS
+   ———————————————————— */
+:root {
+  /* ——— Brand & Action Colors ——— */
+  --color-primary:   #4361ee;   /* Main brand blue – buttons, headers, links */
+  --color-success:   #2ecc71;   /* Fresh green – success messages, confetti */
+  --color-warning:   #f39c12;   /* Warm orange – return actions, alerts */
+  --color-danger:    #e74c3c;   /* Bold red – overdue items, errors */
+
+  /* ——— Neutral & Background Colors ——— */
+  --color-dark:      #2c3e50;   /* Deep navy – strong text, borders */
+  --color-light:     #ecf0f1;   /* Soft off-white – input backgrounds */
+  --color-gray:      #95a5a6;   /* Muted gray – placeholders, icons */
+  --color-bg:        #f0f2f5;   /* Page background – light & airy */
+  --color-card:      #ffffff;   /* Cards, modals, tables – crisp white */
+
+  /* ——— Layout & Visual Effects ——— */
+  --radius:          16px;      /* Consistent rounded corners */
+  --shadow:          0 15px 35px rgba(0, 0, 0, 0.1); /* Soft, elevated feel */
+  --transition:      all 0.4s ease; /* Smooth interactions */
+  --font-family:     'Poppins', sans-serif; /* Modern, readable font */
+}
+
+/* ————————————————————
+   2. DARK MODE – Elegant & Eye-Friendly
+   ———————————————————— */
+[data-theme="dark"] {
+  --color-bg:        #121212;   /* Deep space black */
+  --color-card:      #1e1e1e;   /* Dark card surface */
+  --color-text:      #e0e0e0;   /* Soft white text */
+  --color-light:     #2d2d2d;   /* Input fields in dark */
+  --color-gray:      #b0b0b0;   /* Softer gray for contrast */
+}
+
+/* ————————————————————
+   3. GLOBAL STYLES – Clean Foundation
+   ———————————————————— */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  background: var(--color-bg);
+  color: #333;
+  line-height: 1.6;
+  transition: var(--transition);
+}
+
+[data-theme="dark"] body {
+  color: var(--color-text);
+}
+
+/* ————————————————————
+   4. LAYOUT CONTAINER
+   ———————————————————— */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* ————————————————————
+   5. HEADER – Welcoming & Bold
+   ———————————————————— */
+header h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  text-align: center;
+  background: linear-gradient(135deg, var(--color-primary), #7209b7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 8px;
+}
+
+header p {
+  text-align: center;
+  color: var(--color-gray);
+  font-size: 1.1rem;
+  margin-top: 8px;
+}
+
+/* ————————————————————
+   6. THEME TOGGLE – Floating Orb
+   ———————————————————— */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background: var(--color-card);
+  color: var(--color-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  z-index: 1000;
+  font-size: 1.4rem;
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+}
+
+/* ————————————————————
+   7. SEARCH BAR – Smart & Subtle
+   ———————————————————— */
+.search-box {
+  position: relative;
+  max-width: 600px;
+  margin: 30px auto;
+}
+
+#searchInput {
+  width: 100%;
+  padding: 16px 50px 16px 20px;
+  font-size: 1.1rem;
+  border: 2px solid #ddd;
+  border-radius: 50px;
+  background: var(--color-card);
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+#searchInput:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px rgba(67, 97, 238, 0.2);
+}
+
+.search-box i {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-gray);
+  pointer-events: none;
+}
+
+/* ————————————————————
+   8. ACTION BUTTONS – Pill-shaped & Playful
+   ———————————————————— */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+}
+
+/* Button Variants */
+.btn.success   { background: var(--color-success); color: #fff; }
+.btn.primary   { background: var(--color-primary); color: #fff; }
+.btn.warning   { background: var(--color-warning); color: #fff; }
+.btn.secondary { background: var(--color-gray);    color: #fff; }
+
+/* ————————————————————
+   9. DASHBOARD CARDS – At-a-Glance Stats
+   ———————————————————— */
+.dashboard {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: var(--color-card);
+  padding: 20px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  text-align: center;
+  min-width: 150px;
+  flex: 1;
+}
+
+.card h3 {
+  margin: 0;
+  color: var(--color-primary);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.card p {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin: 10px 0 0;
+  color: var(--color-danger);
+}
+
+/* ————————————————————
+   10. DATA TABLE – Clean & Interactive
+   ———————————————————— */
+.table-wrapper {
+  background: var(--color-card);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  margin-top: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  background: linear-gradient(135deg, var(--color-primary), #7209b7);
+  color: #fff;
+  padding: 16px;
+  text-align: center;
+  font-weight: 600;
+}
+
+td {
+  padding: 14px;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+}
+
+tr:hover {
+  background: rgba(67, 97, 238, 0.05);
+}
+
+tr.selected {
+  background: #e3f2fd !important;
+  font-weight: 600;
+}
+
+/* Small Return Button in Table */
+.btn-return {
+  background: var(--color-warning);
+  color: #fff;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+/* ————————————————————
+   11. MODALS – Centered & Focused
+   ———————————————————— */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background: var(--color-card);
+  margin: auto;
+  padding: 30px;
+  width: 90%;
+  max-width: 500px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 32px;
+  cursor: pointer;
+  color: var(--color-gray);
+  transition: all 0.3s ease;
+}
+
+.close:hover {
+  color: var(--color-danger);
+  transform: rotate(90deg);
+}
+
+/* Form Inputs in Modals */
+.modal input {
+  width: 100%;
+  padding: 14px;
+  margin: 12px 0;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background: var(--color-light);
+  font-size: 1rem;
+}
+
+/* Info Panels & Return List */
+#issueInfo,
+#returnList {
+  background: #f8f9fa;
+  padding: 16px;
+  border-radius: 12px;
+  margin: 15px 0;
+  max-height: 300px;
+  overflow-y: auto;
+  font-size: 0.95rem;
+}
+
+.return-card {
+  padding: 12px;
+  margin: 8px 0;
+  background: #fff9c4;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.return-card:hover {
+  background: #ffeaa7;
+}
+
+/* ————————————————————
+   12. TOAST NOTIFICATIONS – Friendly Alerts
+   ———————————————————— */
+#toast {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: var(--color-success);
+  color: #fff;
+  padding: 16px 24px;
+  border-radius: 50px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  z-index: 2000;
+  transform: translateX(400px);
+  transition: transform 0.5s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+}
+
+#toast.show {
+  transform: translateX(0);
+}
+
+#toast.error {
+  background: var(--color-danger);
+}
+
+/* ————————————————————
+   13. CONFETTI & RECEIPT – Celebration & Proof
+   ———————————————————— */
+#confetti {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  display: none;
+}
+
+#receiptBody {
+  background: #f8fff8;
+  padding: 20px;
+  border-radius: 12px;
+  margin: 20px 0;
+  border: 2px dashed var(--color-success);
+  text-align: left;
+  font-family: 'Courier New', monospace;
+  line-height: 1.8;
+  color: #2d6a4f;
+}
+
+/* ————————————————————
+   14. RESPONSIVE – Mobile First
+   ———————————————————— */
+@media (max-width: 768px) {
+  .controls {
+    flex-direction: column;
+  }
+  .btn {
+    width: 80%;
+    justify-content: center;
+  }
+  .card {
+    min-width: 120px;
+  }
+  header h1 {
+    font-size: 2.2rem;
+  }
+}
+
+/* ————————————————————
+   15. PRINT STYLES – Clean Receipts
+   ———————————————————— */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #receiptContent,
+  #receiptContent * {
+    visibility: visible;
+  }
+  #receiptContent {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    padding: 20px;
+  }
+}
